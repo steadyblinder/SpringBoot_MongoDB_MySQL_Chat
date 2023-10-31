@@ -1,5 +1,6 @@
 package com.ctrenka.spring_mongodb_mysql_auth.controller;
 
+import com.ctrenka.spring_mongodb_mysql_auth.controller.auth.UserCredential;
 import com.ctrenka.spring_mongodb_mysql_auth.model.Person;
 import com.ctrenka.spring_mongodb_mysql_auth.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -16,12 +17,20 @@ public class PersonController {
     PersonRepository repository;
 
     Logger logger = LoggerFactory.getLogger(PersonController.class);
+//    @CrossOrigin("http://localhost:3001")
     @GetMapping("")
     public List<Person> Index() {
         logger.info("*********************** This is people controller index function");
         return repository.findAll();
     }
+    @CrossOrigin(origins = "http://localhost:3001")
+    @PostMapping("")
+    public UserCredential LoginTest(UserCredential user) {
+        logger.info(user.toString());
 
+//        return repository.findAll();
+        return user;
+    }
     @PostMapping("/create")
     public Person create(Person person) {
         try{

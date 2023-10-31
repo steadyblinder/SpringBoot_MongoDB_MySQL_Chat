@@ -9,7 +9,6 @@ import java.io.IOException;
 
 @Component
 public class SecurityServletFilter implements Filter {
-
     Logger logger = LoggerFactory.getLogger(SecurityServletFilter.class);
 
     @Override
